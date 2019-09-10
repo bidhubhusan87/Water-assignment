@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { InMemoryDbService } from 'angular-in-memory-web-api';
-import { cardData } from './data.config';
+import { cardData } from '../data.config';
 
 @Injectable({
   providedIn: 'root'

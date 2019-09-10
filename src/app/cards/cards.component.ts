@@ -1,6 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { GetCardDetailsService } from '../get-card-details.service';
-import { forkJoin } from 'rxjs';
+import { GetCardDetailsService } from '../services/get-card-details.service';
 import { ActivatedRoute } from '@angular/router';
 
 
@@ -12,6 +11,7 @@ import { ActivatedRoute } from '@angular/router';
 export class CardsComponent implements OnInit {
 
   constructor(public route: ActivatedRoute, public GetCardDetailsService: GetCardDetailsService) { }
+  /* variable declaration */
   viewType: string;
   allCardData: any;
   cardPageData: any;
@@ -19,16 +19,14 @@ export class CardsComponent implements OnInit {
   isCardBoughtService: boolean;
 
   ngOnInit() {
-    this.viewType = this.route.snapshot.data.type
+    this.viewType = this.route.snapshot.data.content
     this.isCardBoughtService = this.GetCardDetailsService.isBoughtCard;
     this.getCardDetails();
-    
   }
   getCardDetails() {
     this.GetCardDetailsService.getCardDetails().subscribe((data: Array<Object>) => {
       this.allCardData = data;
       this.cardPageData = this.viewType == 'one' ? data.filter(data => data['category'] == 'tab1') : data.filter(data => data['category'] == 'tab2');
-      
     })
     
   }
@@ -45,18 +43,17 @@ export class CardsComponent implements OnInit {
     if (isBought) {
       this.GetCardDetailsService.getSelectedCardDetails().subscribe((selectedDetails: any) => {
         if (selectedDetails.length) {
-          const getSelected = forkJoin(...selectedDetails.map(selectedCard => {
+          selectedDetails.map(selectedCard => {
             selectedDetails.selected = false;
             return this.GetCardDetailsService.updateCardDetails(selectedCard)
-          }));
-          getSelected.subscribe(res => {
-            cardData.selected = true
-            this.GetCardDetailsService.updateCardDetails(cardData).subscribe((data) => {
-              this.getCardDetails();
-            })
           });
+          cardData.selected = true;
+          this.GetCardDetailsService.updateCardDetails(cardData).subscribe((data) => {
+            this.getCardDetails();
+          })
+          
         } else {
-          cardData.selected = true
+          cardData.selected = true;
           this.GetCardDetailsService.updateCardDetails(cardData).subscribe((data) => {
             this.getCardDetails();
           })
@@ -65,14 +62,14 @@ export class CardsComponent implements OnInit {
     } else {
       this.GetCardDetailsService.getSelectedCardDetails().subscribe((selectedDetails: any) => {
         if (selectedDetails.length) {
-          const allObs = forkJoin(...selectedDetails.map(selectedCard => {
-
+          selectedDetails.map(selectedCard => {
             selectedCard.selected = false;
             return this.GetCardDetailsService.updateCardDetails(selectedCard)
-          }));
-          allObs.subscribe(res => {
-            this.getCardDetails();
           });
+          cardData.selected = false;
+          this.GetCardDetailsService.updateCardDetails(cardData).subscribe((data) => {
+            this.getCardDetails();
+          })
         }
       });
 

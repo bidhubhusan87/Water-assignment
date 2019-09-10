@@ -6,7 +6,7 @@ export const cardData = [
         detail: "Starter features for your business to grow.",
         selected: false,
         category: 'tab1',
-        bgcolor: '#979797'
+        bgcolor: 'typ1'
     },
     {
         id: 2,
@@ -15,7 +15,7 @@ export const cardData = [
         detail: "Regular features for your business to grow.",
         selected: false,
         category: 'tab1',
-        bgcolor: '#3B86FF'
+        bgcolor: 'typ2'
     },
     {
         id: 3,
@@ -24,7 +24,7 @@ export const cardData = [
         detail: "Professional features for your business to grow.",
         selected: false,
         category: 'tab2',
-        bgcolor: '#8B68EE'
+        bgcolor: 'typ3'
     },
     {
         id: 4,
@@ -33,6 +33,6 @@ export const cardData = [
         detail: "The ultimate set of features for your business to grow.",
         selected: false,
         category: 'tab2',
-        bgcolor: '#EE3541'
+        bgcolor: 'typ4'
     }
 ]

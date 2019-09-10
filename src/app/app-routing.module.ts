@@ -8,17 +8,17 @@ const routes: Routes = [
     path: '',
     component: CardsComponent,
     pathMatch: 'full',
-    data: { type: 'one' }
+    data: { content: 'one' }
   },
   {
     path: 'pageone',
     component: CardsComponent,
-    data: { type: 'one' }
+    data: { content: 'one' }
   },
   {
     path: 'pagetwo',
     component: CardsComponent,
-    data: { type: 'two' }
+    data: { content: 'two' }
   }
 ];
 
