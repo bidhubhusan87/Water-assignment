@@ -1,0 +1,12 @@
+@mixin header-menuStyle{
+    color: #fff;
+    padding: 5px;
+    text-decoration: none;
+    min-width: 50px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    &:hover{
+        background: rgba(255,255,255,0.2);
+    }
+}

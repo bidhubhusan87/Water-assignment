@@ -1,0 +1,60 @@
+.rate-card__container{
+    width: 60%;
+    margin: 0 auto;
+    .rate-card__items{
+        background: #cccccc;
+        max-width: 400px;
+        margin-top: 100px;
+        margin-bottom: 10px;
+        margin-top: 100px;
+
+        @media (max-width: $layout-breakpoint-small) {
+            max-width: 100%;
+            position: relative !important;
+            width: 100% !important;
+            left: auto !important;
+        }
+        opacity: 1;
+            pointer-events: auto;
+        figure{
+            display: flex;
+            flex-direction: column;
+            color: #fff;
+            justify-content: flex-start;
+
+        }
+        h1{
+            font-size:  1.6em;
+            color: #fff;
+            font-weight: normal;
+            text-align: left;
+            width: 96%;
+            padding: 2%;
+            margin: 0;
+        }
+        .rate-card__price{
+            font-weight: normal;
+            text-align: center;
+            font-size: 80px;
+        }
+        .rate-card__details{
+            font-size: 18px;
+            text-align: left;
+            width: 95%;
+            padding: 5%;
+        }
+        button{
+            width: 120px;
+            height: 35px;
+            border-radius: 4px;
+            font-size: 15px;
+            color: #3B86FF;
+            font-weight: 300;
+            text-transform: uppercase;
+        }
+        &.disable{
+            opacity: 0.5;
+            pointer-events: none;
+        }
+    }
+}

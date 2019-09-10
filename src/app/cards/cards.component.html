@@ -1,0 +1,13 @@
+<article class="rate-card__container">
+        <mat-grid-list cols="2" rowHeight="290px">
+                <mat-grid-tile class="rate-card__items" *ngFor="let item of cardPageData; let i = index" [ngClass]="{'disable': !item.selected && isCardBoughtService}" [ngStyle]="{'background-color':item.bgcolor}">
+                                    <h1>{{item.type}}</h1>
+                                    <div class="rate-card__price" *ngIf="!item.selected">{{item.price}}</div>
+                                    <div class="rate-card__price" *ngIf="item.selected">Bought</div>
+                                    <div class="rate-card__details">{{item.detail}}</div>
+                                    <button *ngIf="!item.selected" class="buy-btn" (click)="selectCard(item, true)">Buy</button>
+                                    <button *ngIf="item.selected" class="cancel-btn" (click)="selectCard(item, false)">Cancel</button>
+                            
+                </mat-grid-tile>
+        </mat-grid-list>
+</article>
