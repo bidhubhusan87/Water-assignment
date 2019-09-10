@@ -1,0 +1,7 @@
+@mixin reset-list {
+    @each $key, $value in $bgcolors {
+        &.#{$key}{
+            background: #{$value}
+        }
+    }
+}

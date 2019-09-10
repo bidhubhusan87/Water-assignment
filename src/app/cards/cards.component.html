@@ -1,6 +1,6 @@
 <article class="rate-card__container">
         <mat-grid-list cols="2" rowHeight="290px">
-                <mat-grid-tile class="rate-card__items" *ngFor="let item of cardPageData; let i = index" [ngClass]="{'disable': !item.selected && isCardBoughtService}">
+                <mat-grid-tile class="rate-card__items {{item.bgcolor}}" *ngFor="let item of cardPageData; let i = index" [ngClass]="{'disable': !item.selected && isCardBoughtService}">
                         <h1>{{item.type}}</h1>
                         <div class="rate-card__price" *ngIf="!item.selected">{{item.price}}</div>
                         <div class="rate-card__price" *ngIf="item.selected">Bought</div>
