@@ -5,8 +5,8 @@
                         <div class="rate-card__price" *ngIf="!item.selected">{{item.price}}</div>
                         <div class="rate-card__price" *ngIf="item.selected">Bought</div>
                         <div class="rate-card__details">{{item.detail}}</div>
-                        <button *ngIf="!item.selected" class="buy-btn" (click)="selectCard(item, true)">Buy</button>
-                        <button *ngIf="item.selected" class="cancel-btn" (click)="selectCard(item, false)">Cancel</button>
+                        <button *ngIf="!item.selected" class="buy-btn" (click)="selectYouCard(item)">Buy</button>
+                        <button *ngIf="item.selected" class="cancel-btn" (click)="deselectAllCards(item)">Cancel</button>
                 </mat-grid-tile>
         </mat-grid-list>
 </article>

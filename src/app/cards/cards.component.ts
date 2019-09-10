@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { cardModel } from '../models/data.model';
 import { GetCardDetailsService } from '../services/get-card-details.service';
 import { ActivatedRoute } from '@angular/router';
 
@@ -17,66 +18,42 @@ export class CardsComponent implements OnInit {
   cardPageData: any;
   iscardbought: boolean;
   isCardBoughtService: boolean;
+  isCardSelected: boolean;
 
   ngOnInit() {
     this.viewType = this.route.snapshot.data.content
-    this.isCardBoughtService = this.GetCardDetailsService.isBoughtCard;
     this.getCardDetails();
   }
   getCardDetails() {
     this.GetCardDetailsService.getCardDetails().subscribe((data: Array<Object>) => {
       this.allCardData = data;
+      this.getDataStatus(this.GetCardDetailsService.isBoughtCard);
       this.cardPageData = this.viewType == 'one' ? data.filter(data => data['category'] == 'tab1') : data.filter(data => data['category'] == 'tab2');
+      console.log(this.allCardData); 
     })
-    
   }
-  selectCard(cardData, isBought){ 
-    if (isBought) {
-      this.iscardbought = true;
-      this.GetCardDetailsService.isBoughtCard = true;
-      this.isCardBoughtService = this.GetCardDetailsService.isBoughtCard;
-    } else {
-      this.iscardbought = false;
-      this.GetCardDetailsService.isBoughtCard = false;
-      this.isCardBoughtService = this.GetCardDetailsService.isBoughtCard;
-    }
-    if (isBought) {
-      this.GetCardDetailsService.getSelectedCardDetails().subscribe((selectedDetails: any) => {
-        if (selectedDetails.length) {
-          selectedDetails.map(selectedCard => {
-            selectedDetails.selected = false;
-            return this.GetCardDetailsService.updateCardDetails(selectedCard)
-          });
-          cardData.selected = true;
-          this.GetCardDetailsService.updateCardDetails(cardData).subscribe((data) => {
-            this.getCardDetails();
-          })
-          
-        } else {
-          cardData.selected = true;
-          this.GetCardDetailsService.updateCardDetails(cardData).subscribe((data) => {
-            this.getCardDetails();
-          })
-        }
-      })
-    } else {
-      this.GetCardDetailsService.getSelectedCardDetails().subscribe((selectedDetails: any) => {
-        if (selectedDetails.length) {
-          selectedDetails.map(selectedCard => {
-            selectedCard.selected = false;
-            return this.GetCardDetailsService.updateCardDetails(selectedCard)
-          });
-          cardData.selected = false;
-          this.GetCardDetailsService.updateCardDetails(cardData).subscribe((data) => {
-            this.getCardDetails();
-          })
-        }
-      });
-
-    }
-    
+  selectYouCard(cardModel : cardModel){
+    this.isCardSelected = true;
+    cardModel.selected = true;
+    this.updateStatus(true);
+    this.updateCardData(cardModel);
   }
-  
-  
-  
+  updateCardData(cardModel : cardModel) {
+    this.GetCardDetailsService.updateCardDetails(cardModel).subscribe((data) => {
+      this.getCardDetails();
+    })
+  }
+  deselectAllCards(cardModel: cardModel)  {
+    this.isCardSelected = false;
+    cardModel.selected = false;
+    this.updateStatus(false);
+    this.updateCardData(cardModel);
+  }
+  updateStatus(status: boolean){
+    this.GetCardDetailsService.isBoughtCard = status;
+    this.isCardBoughtService = this.GetCardDetailsService.isBoughtCard;
+  }
+  getDataStatus(status: boolean){
+    this.isCardBoughtService = status;
+  }
 }

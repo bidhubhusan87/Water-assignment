@@ -1,6 +1,7 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { environment } from '../../environments/environment';
+import { cardModel } from '../models/data.model';
 
 
 @Injectable({
@@ -16,14 +17,14 @@ export class GetCardDetailsService {
 
   /* get Card Details */
   public getCardDetails() {
-    return this.httpClient.get(this.API_URL + 'offersData');
+    return this.httpClient.get<cardModel[]>(this.API_URL + 'offersData');
   }
   /* Get Selected Card Details */
   public getSelectedCardDetails() {
-    return this.httpClient.get(`${this.API_URL + 'offersData'}?selected=^true`);
+    return this.httpClient.get<cardModel[]>(`${this.API_URL + 'offersData'}?selected=^true`);
   }
   /* To Updated Card Details */
-  public updateCardDetails(post) {
+  public updateCardDetails(post: cardModel) {
     return this.httpClient.put(`${this.API_URL + 'offersData'}/${post.id}`, post);
   }
 }
