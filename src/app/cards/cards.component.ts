@@ -45,11 +45,11 @@ export class CardsComponent implements OnInit {
     if (isBought) {
       this.GetCardDetailsService.getSelectedCardDetails().subscribe((selectedDetails: any) => {
         if (selectedDetails.length) {
-          const allObs = forkJoin(...selectedDetails.map(selectedCard => {
+          const getSelected = forkJoin(...selectedDetails.map(selectedCard => {
             selectedDetails.selected = false;
             return this.GetCardDetailsService.updateCardDetails(selectedCard)
           }));
-          allObs.subscribe(res => {
+          getSelected.subscribe(res => {
             cardData.selected = true
             this.GetCardDetailsService.updateCardDetails(cardData).subscribe((data) => {
               this.getCardDetails();
