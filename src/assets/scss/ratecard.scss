@@ -1,6 +1,9 @@
 .rate-card__container{
     width: 60%;
     margin: 0 auto;
+    @media (max-width: $layout-breakpoint-small) {
+        width: 90%;
+    }
     .rate-card__items{
         background: #cccccc;
         max-width: 400px;
@@ -13,6 +16,8 @@
             position: relative !important;
             width: 100% !important;
             left: auto !important;
+            margin-top: 20px;
+            height: 320px !important;
         }
         opacity: 1;
             pointer-events: auto;
@@ -41,6 +46,7 @@
             text-align: left;
             width: 95%;
             padding: 5%;
+            text-align: center;
         }
         button{
             width: 120px;

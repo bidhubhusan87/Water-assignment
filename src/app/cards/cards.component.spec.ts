@@ -59,4 +59,7 @@ describe('CardsComponent', () => {
   it('should have getCardDetails', () => {
     expect(component.getCardDetails).toBeTruthy();
   });
+  it('should have updateCardData', () => {
+    expect(component.updateCardData).toBeTruthy();
+  });
 });
