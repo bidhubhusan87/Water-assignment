@@ -48,7 +48,7 @@ describe('CardsComponent', () => {
     expect(component).toBeTruthy();
   });
 
-  it('#getOffers should return an array with Offer objects', async () => {
+  it('getCardDetails should return an array and contains offersData objects', async () => {
     DummyService.getCardDetails().subscribe(value => {
       propertExpectedAfterRespnise = Object.getOwnPropertyNames(value[0]);
       propertyAfterResponse = Object.getOwnPropertyNames(DummyOffer);
