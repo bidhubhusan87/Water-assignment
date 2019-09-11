@@ -5,5 +5,4 @@ export class cardModel {
     detail: String;
     selected: boolean;
     category: String;
-    bgcolor: String;
-}  
+}

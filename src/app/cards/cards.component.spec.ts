@@ -16,7 +16,7 @@ describe('CardsComponent', () => {
   let DummyOffer: cardModel;
   
 
-  beforeEach(async((DummyOffer) => {
+  beforeEach(async(() => {
     TestBed.configureTestingModule({
       imports: [
         MatGridListModule,
@@ -33,7 +33,7 @@ describe('CardsComponent', () => {
       price: 1,
       detail: 'Starter features for your business to grow.',
       selected: false,
-      category: 'tab1'
+      category: 'proffessional'
     };
     DummyService = TestBed.get(GetCardDetailsService);
   }));
@@ -59,7 +59,10 @@ describe('CardsComponent', () => {
   it('should have getCardDetails', () => {
     expect(component.getCardDetails).toBeTruthy();
   });
-  it('should have updateCardData', () => {
-    expect(component.updateCardData).toBeTruthy();
-  });
+  it('updateCardData should have been called', () => {
+      spyOn(component, 'updateCardData');
+      component.selectYouCard(DummyOffer);
+      expect(DummyOffer.selected).toEqual(true);
+      expect(component.updateCardData).toHaveBeenCalled();
+  }); 
 });

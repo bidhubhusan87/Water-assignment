@@ -28,7 +28,7 @@ export class CardsComponent implements OnInit {
     })
   }
   selectYouCard(cardModel : cardModel){
-    cardModel.selected = true;
+    cardModel.selected = true;  
     this.updateStatus(true);
     this.updateCardData(cardModel);
   }
