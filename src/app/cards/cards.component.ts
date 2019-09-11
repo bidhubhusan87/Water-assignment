@@ -14,26 +14,20 @@ export class CardsComponent implements OnInit {
   constructor(public route: ActivatedRoute, public GetCardDetailsService: GetCardDetailsService) { }
   /* variable declaration */
   viewType: string;
-  allCardData: any;
-  cardPageData: any;
-  iscardbought: boolean;
+  cardPageData: Array<cardModel>;
   isCardBoughtService: boolean;
-  isCardSelected: boolean;
 
   ngOnInit() {
     this.viewType = this.route.snapshot.data.content
     this.getCardDetails();
   }
   getCardDetails() {
-    this.GetCardDetailsService.getCardDetails().subscribe((data: Array<Object>) => {
-      this.allCardData = data;
+    this.GetCardDetailsService.getCardDetails().subscribe((data: Array<cardModel>) => {
       this.getDataStatus(this.GetCardDetailsService.isBoughtCard);
-      this.cardPageData = this.viewType == 'one' ? data.filter(data => data['category'] == 'tab1') : data.filter(data => data['category'] == 'tab2');
-      console.log(this.allCardData); 
+      this.cardPageData = this.viewType == 'one' ? data.filter(data => data['category'] == 'strater') : data.filter(data => data['category'] == 'proffessional');
     })
   }
   selectYouCard(cardModel : cardModel){
-    this.isCardSelected = true;
     cardModel.selected = true;
     this.updateStatus(true);
     this.updateCardData(cardModel);
@@ -43,8 +37,7 @@ export class CardsComponent implements OnInit {
       this.getCardDetails();
     })
   }
-  deselectAllCards(cardModel: cardModel)  {
-    this.isCardSelected = false;
+  deselectCards(cardModel: cardModel)  {
     cardModel.selected = false;
     this.updateStatus(false);
     this.updateCardData(cardModel);
