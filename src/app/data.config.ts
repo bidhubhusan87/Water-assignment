@@ -5,7 +5,7 @@ export const cardData = [
         price: "$1",
         detail: "Starter features for your business to grow.",
         selected: false,
-        category: 'strater'
+        category: 'starter'
     },
     {
         id: 2,
@@ -13,7 +13,7 @@ export const cardData = [
         price: "$25",
         detail: "Regular features for your business to grow.",
         selected: false,
-        category: 'strater'
+        category: 'starter'
     },
     {
         id: 3,
@@ -21,7 +21,7 @@ export const cardData = [
         price: "$75",
         detail: "Professional features for your business to grow.",
         selected: false,
-        category: 'proffessional'
+        category: 'professional'
     },
     {
         id: 4,
@@ -29,6 +29,6 @@ export const cardData = [
         price: "$115",
         detail: "The ultimate set of features for your business to grow.",
         selected: false,
-        category: 'proffessional'
+        category: 'professional'
     }
 ]

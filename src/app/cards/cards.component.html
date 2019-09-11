@@ -5,7 +5,7 @@
                         <div class="rate-card__price" *ngIf="!carobj.selected">{{carobj.price}}</div>
                         <div class="rate-card__price" *ngIf="carobj.selected">Bought</div>
                         <div class="rate-card__details">{{carobj.detail}}</div>
-                        <button *ngIf="!carobj.selected" class="buy-btn" (click)="selectYouCard(carobj)">Buy</button>
+                        <button *ngIf="!carobj.selected" class="buy-btn" (click)="selectYourCard(carobj)">Buy</button>
                         <button *ngIf="carobj.selected" class="cancel-btn" (click)="deselectCards(carobj)">Cancel</button>
                 </mat-grid-tile>
         </mat-grid-list>

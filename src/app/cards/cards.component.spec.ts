@@ -61,7 +61,7 @@ describe('CardsComponent', () => {
   });
   it('updateCardData should have been called', () => {
       spyOn(component, 'updateCardData');
-      component.selectYouCard(DummyOffer);
+      component.selectYourCard(DummyOffer);
       expect(DummyOffer.selected).toEqual(true);
       expect(component.updateCardData).toHaveBeenCalled();
   }); 

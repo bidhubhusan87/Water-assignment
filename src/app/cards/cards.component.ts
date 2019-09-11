@@ -24,10 +24,10 @@ export class CardsComponent implements OnInit {
   getCardDetails() {
     this.GetCardDetailsService.getCardDetails().subscribe((data: Array<cardModel>) => {
       this.getDataStatus(this.GetCardDetailsService.isBoughtCard);
-      this.cardPageData = this.viewType == 'one' ? data.filter(data => data['category'] == 'strater') : data.filter(data => data['category'] == 'proffessional');
+      this.cardPageData = this.viewType == 'one' ? data.filter(data => data['category'] == 'starter') : data.filter(data => data['category'] == 'professional');
     })
   }
-  selectYouCard(cardModel : cardModel){
+  selectYourCard(cardModel : cardModel){
     cardModel.selected = true;  
     this.updateStatus(true);
     this.updateCardData(cardModel);
